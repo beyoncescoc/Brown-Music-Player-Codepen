@@ -110,13 +110,13 @@ $(function () {
     hideHover();
   }
 
-  function updateCurrTime() {
+function updateCurrTime() {
     nTime = new Date();
     nTime = nTime.getTime();
 
     if (!tFlag) {
-      tFlag = true;
-      trackTime.addClass("active");
+        tFlag = true;
+        trackTime.addClass("active");
     }
 
     curMinutes = Math.floor(audio.currentTime / 60);
@@ -140,24 +140,21 @@ $(function () {
     else tTime.text(durMinutes + ":" + durSeconds);
 
     if (
-      isNaN(curMinutes) ||
-      isNaN(curSeconds) ||
-      isNaN(durMinutes) ||
-      isNaN(durSeconds)
+        isNaN(curMinutes) ||
+        isNaN(curSeconds) ||
+        isNaN(durMinutes) ||
+        isNaN(durSeconds)
     )
-      trackTime.removeClass("active");
+        trackTime.removeClass("active");
     else trackTime.addClass("active");
 
     seekBar.width(playProgress + "%");
 
     if (playProgress == 100) {
-      i.attr("class", "fa fa-play");
-      seekBar.width(0);
-      tProgress.text("00:00");
-      albumArt.removeClass("buffering").removeClass("active");
-      clearInterval(buffInterval);
+        // Track has ended, play the next track
+        selectTrack(1);
     }
-  }
+}
 
   function checkBuffering() {
     clearInterval(buffInterval);
