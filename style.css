@@ -319,3 +319,9 @@ body {
 .button:hover i {
   color: #fff;
 }
+
+## Targeting the Codepen Container
+
+.codepen-container {
+  background-color: white;
+}
